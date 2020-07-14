@@ -25,6 +25,9 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  api: {
+    base: 'https://setupjoy.ue.r.appspot.com/'
+  },
   /*
   ** Global CSS
   */
