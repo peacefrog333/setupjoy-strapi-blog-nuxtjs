@@ -26,13 +26,15 @@ export default {
     ]
   },
   api: {
-    base: 'https://setupjoy.ue.r.appspot.com/'
+    base: 'https://setupjoy.ue.r.appspot.com/',
+    blogs: 'blogs'
   },
   /*
   ** Global CSS
   */
   css: [
   ],
+  
   /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
@@ -56,6 +58,10 @@ export default {
   */
   modules: [
   ],
+  purgeCSS: {
+    whitelistPatterns: [/svg.*/],
+    purgeCSSInDev: true,
+  },
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
