@@ -3,9 +3,7 @@
     <div class="container mx-auto">
       <div class="px-5">
         <div class="flex flex-wrap -ml-2 mt-12 justify-center">
-          <blog-post></blog-post>
-          <blog-post></blog-post>
-          <blog-post></blog-post>
+          <blog-post v-for='blog in blogs' :key='blog.id' :blog='blog'></blog-post>
         </div>
       </div>
     </div>
@@ -50,8 +48,10 @@ export default {
     };
   },
   async fetch() {
-    console.log(config.api.base+config.api.blogs)
     this.blogs = await axios.get(config.api.base+config.api.blogs).then((response) => {
+      return response.data
+    })
+    this.categories = await axios.get(config.api.base+config.api.blogCategories).then((response) => {
       return response.data
     })
   },
@@ -59,7 +59,8 @@ export default {
     return {
       seoTitle: 'Setup Joy',
       seoDescription: 'Setup Joy',
-      blogs: null
+      blogs: null,
+      categories:  [],
     }
   }
 };

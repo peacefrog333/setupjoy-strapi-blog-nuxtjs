@@ -27,7 +27,8 @@ export default {
   },
   api: {
     base: 'https://setupjoy.ue.r.appspot.com/',
-    blogs: 'blogs'
+    blogs: 'blogs',
+    blogCategories: 'blog-categories'
   },
   /*
   ** Global CSS
