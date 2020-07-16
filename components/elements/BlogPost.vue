@@ -1,53 +1,97 @@
 <template>
-  <div class="w-full sm:w-1/2 lg:w-1/4 p-2 cursor-pointer">
-    <div class="bg-white shadow-2xl rounded-lg mb-6 tracking-wide">
-      <div class="md:flex-shrink-0">
-        <img
-          :src="blog.image.url"
-          alt="mountains"
-          class="w-full h-64 rounded-lg rounded-b-none"
-        />
+    <div v-if='blog'>
+        <div class="mb-4 md:mb-0 w-full max-w-screen-md mx-auto relative mt-5" style="height: 15em;">
+        <img :src="blog.image.url"
+        class="absolute left-0 top-0 w-full h-full z-0 object-cover rounded-lg" />
+        
       </div>
-      <div class="px-4 py-2 mt-2">
-        <h2
-          class="font-bold text-2xl text-gray-800 tracking-normal px-1"
-        >{{blog.title}}</h2>
-        <p
-          class="text-sm text-gray-700 px-2 mr-1"
-        >{{blog.summary}}</p>
-        <div class="flex items-center justify-between mt-2 mx-6">
-          <a href="#" class="text-blue-500 text-xs -ml-3">Show More</a>
-          <a href="#" class="flex text-gray-700">
-            <svg
-              fill="none"
-              viewBox="0 0 24 24"
-              class="w-6 h-6 text-blue-500"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
-              />
-            </svg>
-            {{blog.blog_comments.length}}
-          </a>
-        </div>
-        <div class="author flex items-center  my-3">
-    
-          <h2 class="text-sm tracking-tighter text-gray-900 px-2">
-            <a href="#" v-for='category in blog.blog_categories' :key='category.id' class='mr-2'>#{{category.title}}</a>
-            <span class="text-gray-600 ml-2">{{blogPostDate}}</span>
+
+      <div class="px-4 lg:px-0 mt-5 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
+          <nuxt-link :to="{path: '/', query: {category: category.title}}" 
+            class="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2 mr-2" 
+            v-for='category in blog.blog_categories' :key='category.id'>{{category.title}}</nuxt-link>
+            <div class='text-sm'>Blog posted on {{blogPostDate}}</div>
+          <h2 class="text-4xl font-semibold text-gray-800 leading-tight  mb-4 mt-2">
+            {{blog.title}}
           </h2>
+        <component 
+        v-for='item in blog.content' 
+        :key='"_content_"+item.id' 
+        :id='"_content_"+item.id' 
+        :content='item' 
+        :is='item.__component.replace(".", "-")' ></component>
+
+        <p class="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
+          justice. Six draw
+          you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
+          resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
+          outlived peculiar rendered led six.</p>
+
+        <p class="pb-6">Difficulty on insensible reasonable in. From as went he they. Preference themselves me as
+          thoroughly
+          partiality considered on in estimating. Middletons acceptance discovered projecting so is so or. In or
+          attachment inquietude remarkably comparison at an. Is surrounded prosperous stimulated am me discretion
+          expression. But truth being state can she china widow. Occasional preference fat remarkably now projecting
+          uncommonly dissimilar. Sentiments projection particular companions interested do at my delightful. Listening
+          newspaper in advantage frankness to concluded unwilling.</p>
+
+        <p class="pb-6">Adieus except say barton put feebly favour him. Entreaties unpleasant sufficient few pianoforte
+          discovered
+          uncommonly ask. Morning cousins amongst in mr weather do neither. Warmth object matter course active law
+          spring six. Pursuit showing tedious unknown winding see had man add. And park eyes too more him. Simple excuse
+          active had son wholly coming number add. Though all excuse ladies rather regard assure yet. If feelings so
+          prospect no as raptures quitting.</p>
+
+        <div class="border-l-4 border-gray-500 pl-4 mb-6 italic rounded">
+          Sportsman do offending supported extremity breakfast by listening. Decisively advantages nor
+          expression
+          unpleasing she led met. Estate was tended ten boy nearer seemed. As so seeing latter he should thirty whence.
+          Steepest speaking up attended it as. Made neat an on be gave show snug tore.
         </div>
+
+        <p class="pb-6">Exquisite cordially mr happiness of neglected distrusts. Boisterous impossible unaffected he me
+          everything.
+          Is fine loud deal an rent open give. Find upon and sent spot song son eyes. Do endeavor he differed carriage
+          is learning my graceful. Feel plan know is he like on pure. See burst found sir met think hopes are marry
+          among. Delightful remarkably new assistance saw literature mrs favourable.</p>
+
+        <h2 class="text-2xl text-gray-800 font-semibold mb-4 mt-4">Uneasy barton seeing remark happen his has</h2>
+
+        <p class="pb-6">Guest it he tears aware as. Make my no cold of need. He been past in by my hard. Warmly thrown
+          oh he common
+          future. Otherwise concealed favourite frankness on be at dashwoods defective at. Sympathize interested
+          simplicity at do projecting increasing terminated. As edward settle limits at in.</p>
+
+        <p class="pb-6">Dashwood contempt on mr unlocked resolved provided of of. Stanhill wondered it it welcomed oh.
+          Hundred no
+          prudent he however smiling at an offence. If earnestly extremity he he propriety something admitting convinced
+          ye. Pleasant in to although as if differed horrible. Mirth his quick its set front enjoy hoped had there. Who
+          connection imprudence middletons too but increasing celebrated principles joy. Herself too improve gay winding
+          ask expense are compact. New all paid few hard pure she.</p>
+
+        <p class="pb-6">Breakfast agreeable incommode departure it an. By ignorant at on wondered relation. Enough at
+          tastes really
+          so cousin am of. Extensive therefore supported by extremity of contented. Is pursuit compact demesne invited
+          elderly be. View him she roof tell her case has sigh. Moreover is possible he admitted sociable concerns. By
+          in cold no less been sent hard hill.</p>
+
+        <p class="pb-6">Detract yet delight written farther his general. If in so bred at dare rose lose good. Feel and
+          make two real
+          miss use easy. Celebrated delightful an especially increasing instrument am. Indulgence contrasted sufficient
+          to unpleasant in in insensible favourable. Latter remark hunted enough vulgar say man. Sitting hearted on it
+          without me.</p>
+
       </div>
     </div>
-  </div>
 </template>
 <script>
 import moment from 'moment'
+import ElementsText from '~/components/elements/ElementsText.vue'
+
 export default {
+    components : {
+        ElementsText
+    },
     props: {
         blog: {
             type: Object,
@@ -59,5 +103,5 @@ export default {
             return moment(this.blog.created_at ).format("MMM Do YYYY")
         }
     }
-};
+}
 </script>

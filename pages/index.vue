@@ -3,7 +3,7 @@
     <div class="container mx-auto">
       <div class="px-5">
         <div class="flex flex-wrap -ml-2 mt-12 justify-center">
-          <blog-post v-for='blog in blogs' :key='blog.id' :blog='blog'></blog-post>
+          <blog-post-card v-for='blog in blogs' :key='blog.id' :blog='blog'></blog-post-card>
         </div>
       </div>
     </div>
@@ -47,13 +47,25 @@ export default {
       ]
     };
   },
+  watch: {
+    '$route.query': '$fetch'
+  },
   async fetch() {
-    this.blogs = await axios.get(config.api.base+config.api.blogs).then((response) => {
+    console.log(this.$route.query)
+    let params = null
+    if(this.$route.query.category){
+      params = {
+        'blog_categories.title': this.$route.query.category
+      }
+    }
+    this.blogs = await axios.get(config.api.base+config.api.blogs, {params: params}).then((response) => {
       return response.data
     })
-    this.categories = await axios.get(config.api.base+config.api.blogCategories).then((response) => {
-      return response.data
-    })
+    if(this.categories.length === 0){
+      this.categories = await axios.get(config.api.base+config.api.blogCategories).then((response) => {
+        return response.data
+      })
+    }
   },
   data() {
     return {
