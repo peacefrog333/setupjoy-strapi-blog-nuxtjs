@@ -26,7 +26,7 @@ export default {
     ]
   },
   api: {
-    base: 'https://setupjoy.ue.r.appspot.com/',
+    base: 'http://localhost:1337/',
     blogs: 'blogs',
     blogCategories: 'blog-categories'
   },

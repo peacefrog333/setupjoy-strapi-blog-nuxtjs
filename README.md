@@ -11,7 +11,7 @@ Blog content types rendered:
 ---- ElementsHeaderTitle.vue\
 ---- ElementsImage.vue\
 ---- ElementsRangking.vue\
----- ElementsText.vue\
+---- ElementsText.vue
 
 Api endpoint in `nuxt.config.js` file. Change the base URL according to your domain API domain.
 ```
