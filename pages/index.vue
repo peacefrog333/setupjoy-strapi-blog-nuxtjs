@@ -2,10 +2,13 @@
   <div>
     <div class="container mx-auto">
       <div class="px-5">
-        <div class="flex flex-wrap -ml-2 mt-12 justify-center">
+        <div class="flex flex-wrap justify-center mt-12 -ml-2">
           <blog-post-card v-for='blog in blogs' :key='blog.id' :blog='blog'></blog-post-card>
         </div>
       </div>
+    </div>
+    <div v-if='loading' >
+      <loading-spinner class='flex mx-auto my-2' style='margin-top: 30vh; height: 100px; width: 100px;' ></loading-spinner>
     </div>
   </div>
 </template>
@@ -51,8 +54,8 @@ export default {
     '$route.query': '$fetch'
   },
   async fetch() {
-    console.log(this.$route.query)
     let params = null
+    this.loading = true
     if(this.$route.query.category){
       params = {
         'blog_categories.title': this.$route.query.category
@@ -66,6 +69,7 @@ export default {
         return response.data
       })
     }
+    this.loading = false
   },
   data() {
     return {
@@ -73,6 +77,7 @@ export default {
       seoDescription: 'Setup Joy',
       blogs: null,
       categories:  [],
+      loading: false
     }
   }
 };

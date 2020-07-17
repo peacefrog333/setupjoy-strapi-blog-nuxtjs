@@ -1,11 +1,13 @@
 <template>
-    <p v-if='content' class="pb-6" :class='wrapperClasses' :style='wrapperStyles'>
-        {{content.content}}
-    </p>
+    <div v-if='content' class="px-10 pb-6" :class='wrapperClasses' :style='wrapperStyles'>
+        <img v-if='content.image' :src="content.image.url"
+        class="text-center rounded-lg " />
+        <div class='pt-2 text-sm text-center text-gray-600'>{{content.title}}</div>
+    </div>
 </template>
 <script>
 export default {
-    name: "elements-text",
+    name: "elements-image",
     props: {
         content: {
             type: Object,

@@ -1,8 +1,11 @@
 <template>
     <div class='container mx-auto'>
         <blog-post v-if='blog' :blog='blog'></blog-post>
-        <div v-else-if='loading === false' class='text-center mt-32'>
+        <div v-else-if='loading === false' class='mt-32 text-center'>
             <div class='text-4xl'>Blog Not found</div>
+        </div>
+        <div v-else >
+          <loading-spinner class='flex mx-auto my-2' style='margin-top: 30vh; height: 100px; width: 100px;' ></loading-spinner>
         </div>
     </div>
 </template>

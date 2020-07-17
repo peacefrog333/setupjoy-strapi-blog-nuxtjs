@@ -1,23 +1,23 @@
 <template>
     <div v-if='blog'>
-        <div class="mb-4 md:mb-0 w-full max-w-screen-md mx-auto relative mt-5" style="height: 15em;">
+        <div class="relative w-full max-w-screen-md mx-auto mt-5 mb-4 md:mb-0" style="height: 15em;">
         <img :src="blog.image.url"
-        class="absolute left-0 top-0 w-full h-full z-0 object-cover rounded-lg" />
+        class="absolute top-0 left-0 z-0 object-cover w-full h-full rounded-lg" />
         
       </div>
 
-      <div class="px-4 lg:px-0 mt-5 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
+      <div class="max-w-screen-md px-4 mx-auto mt-5 text-lg leading-relaxed text-gray-700 lg:px-0">
           <nuxt-link :to="{path: '/', query: {category: category.title}}" 
-            class="px-4 py-1 bg-black text-gray-200 inline-flex items-center justify-center mb-2 mr-2" 
+            class="inline-flex items-center justify-center px-4 py-1 mb-2 mr-2 text-gray-200 bg-black" 
             v-for='category in blog.blog_categories' :key='category.id'>{{category.title}}</nuxt-link>
             <div class='text-sm'>Blog posted on {{blogPostDate}}</div>
-          <h2 class="text-4xl font-semibold text-gray-800 leading-tight  mb-4 mt-2">
+          <h2 class="mt-2 mb-4 text-4xl font-semibold leading-tight text-gray-800">
             {{blog.title}}
           </h2>
         <component 
         v-for='item in blog.content' 
-        :key='"_content_"+item.id' 
-        :id='"_content_"+item.id' 
+        :key='item.__component+item.id' 
+        :id='item.__component+item.id' 
         :content='item' 
         :is='item.__component.replace(".", "-")' ></component>
 
@@ -42,7 +42,7 @@
           active had son wholly coming number add. Though all excuse ladies rather regard assure yet. If feelings so
           prospect no as raptures quitting.</p>
 
-        <div class="border-l-4 border-gray-500 pl-4 mb-6 italic rounded">
+        <div class="pl-4 mb-6 italic border-l-4 border-gray-500 rounded">
           Sportsman do offending supported extremity breakfast by listening. Decisively advantages nor
           expression
           unpleasing she led met. Estate was tended ten boy nearer seemed. As so seeing latter he should thirty whence.
@@ -55,7 +55,7 @@
           is learning my graceful. Feel plan know is he like on pure. See burst found sir met think hopes are marry
           among. Delightful remarkably new assistance saw literature mrs favourable.</p>
 
-        <h2 class="text-2xl text-gray-800 font-semibold mb-4 mt-4">Uneasy barton seeing remark happen his has</h2>
+        <h2 class="mt-4 mb-4 text-2xl font-semibold text-gray-800">Uneasy barton seeing remark happen his has</h2>
 
         <p class="pb-6">Guest it he tears aware as. Make my no cold of need. He been past in by my hard. Warmly thrown
           oh he common
@@ -87,10 +87,12 @@
 <script>
 import moment from 'moment'
 import ElementsText from '~/components/elements/ElementsText.vue'
+import ElementsImage from '~/components/elements/ElementsImage.vue'
 
 export default {
     components : {
-        ElementsText
+        ElementsText,
+        ElementsImage
     },
     props: {
         blog: {
