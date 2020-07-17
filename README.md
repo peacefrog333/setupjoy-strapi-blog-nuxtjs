@@ -1,4 +1,26 @@
-# setupjoy-strapi-blog-nuxtjs
+# Setupjoy Strapi Blog NuxtJS (Front end)
+
+See the strapi backend [here](https://github.com/peacefrog333/setupjoy-strapi-blog). This NuxtJS front end would connect to the API generated from the Strapi Backend.
+
+## Structure
+Blog content types rendered:\
+
+-- elements\
+---- ElementsDivider.vue\
+---- ElementsEmbed.vue\
+---- ElementsHeaderTitle.vue\
+---- ElementsImage.vue\
+---- ElementsRangking.vue\
+---- ElementsText.vue\
+
+Api endpoint in `nuxt.config.js` file. Change the base URL according to your domain API domain.
+```
+  api: {
+    base: 'http://localhost:1337/',
+    blogs: 'blogs',
+    blogCategories: 'blog-categories'
+  }
+```
 
 ## Build Setup
 
@@ -17,4 +39,12 @@ $ yarn start
 $ yarn generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+## Deploy on Google AppEngine
+
+```
+gcloud app deploy app.yaml --project <project_name>
+```
+
+
+
+For detailed explanation on how things work on NuxtJS, check out [Nuxt.js docs](https://nuxtjs.org).
