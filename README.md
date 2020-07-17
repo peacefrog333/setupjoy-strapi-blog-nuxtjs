@@ -3,7 +3,7 @@
 See the strapi backend [here](https://github.com/peacefrog333/setupjoy-strapi-blog). This NuxtJS front end would connect to the API generated from the Strapi Backend.
 
 ## Structure
-Blog content types rendered:\
+Blog content types rendered: 
 
 -- elements\
 ---- ElementsDivider.vue\
