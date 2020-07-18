@@ -1,8 +1,8 @@
 <template>
     <div v-if='blog'>
-        <div class="relative w-full max-w-screen-md mx-auto mt-5 mb-4 md:mb-0" style="height: 15em;">
+        <div class=" px-2 md:px-0  relative w-full max-w-screen-md mx-auto mt-5 mb-4 md:mb-0" style="height: 15em;">
         <img :src="blog.image.url"
-        class="absolute top-0 left-0 z-0 object-cover w-full h-full rounded-lg" />
+        class=" object-cover w-full h-full rounded-lg" />
         
       </div>
 
@@ -14,7 +14,7 @@
           <h2 class="mt-2 mb-4 text-4xl font-semibold leading-tight text-gray-800">
             {{blog.title}}
           </h2>
-          
+
         <component 
         v-for='item in blog.content' 
         :key='item.__component+item.id' 

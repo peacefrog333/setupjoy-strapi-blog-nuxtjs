@@ -1,5 +1,5 @@
 <template>
-    <div v-if='content' class="px-10 pb-6" :class='wrapperClasses' :style='wrapperStyles'>
+    <div v-if='content' class="px-2 md:px-10 pb-3 pt-3" :class='wrapperClasses' :style='wrapperStyles'>
         <img v-if='content.image' :src="content.image.url"
         class="text-center rounded-lg " />
         <div class='pt-2 text-sm text-center text-gray-600'>{{content.title}}</div>
